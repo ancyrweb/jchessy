@@ -1,0 +1,27 @@
+{
+  "name": "jchessy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "rewieer",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.11",
+    "@types/ramda": "^0.26.8",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "prettier": "^1.17.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "pretty": "prettier --write \"{src,__tests__}/**/*.ts\"",
+    "test:watch": "jest --watchAll"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  }
+}
