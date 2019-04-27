@@ -110,4 +110,23 @@ export type Move = {
   to: string;
 };
 
+export type MoveReason = {
+  code: number;
+  text: string;
+};
+
+export type MoveResult = {
+  done: boolean;
+  from: string;
+  to: string;
+  reason: OrNull<MoveReason>;
+};
+
+export type MoveContext = {
+  board: Board;
+  case: BoardCase;
+  x: number;
+  y: number;
+};
+
 export type Vector = { x: number; y: number };
