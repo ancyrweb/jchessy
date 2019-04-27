@@ -1,7 +1,10 @@
-import { Board, BoardCase, MoveContext, Vector } from "../types";
+import { MoveContext, Vector } from "../types";
+import bishopLegalVectors from "./bishopLegalVectors";
+import rookLegalVectors from "./rookLegalVectors";
 
 const queenLegalVectors = (move: MoveContext): Vector[] => {
-  return [];
+  // Basically ... :D
+  return [...bishopLegalVectors(move), ...rookLegalVectors(move)];
 };
 
 export default queenLegalVectors;

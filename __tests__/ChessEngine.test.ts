@@ -184,28 +184,24 @@ describe("Moves", () => {
       let engine = new ChessEngine("8/8/8/8/3R4/8/8/8");
       const result = engine.move({ from: "d4", to: "h4" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("8/8/8/8/7R/8/8/8");
     });
     it("should move the rook to the very left", () => {
       let engine = new ChessEngine("8/8/8/8/3R4/8/8/8");
       const result = engine.move({ from: "d4", to: "a4" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("8/8/8/8/R7/8/8/8");
     });
     it("should move the rook to the very top", () => {
       let engine = new ChessEngine("8/8/8/8/3R4/8/8/8");
       const result = engine.move({ from: "d4", to: "d8" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("3R4/8/8/8/8/8/8/8");
     });
     it("should move the rook to the very bottom", () => {
       let engine = new ChessEngine("8/8/8/8/3R4/8/8/8");
       const result = engine.move({ from: "d4", to: "d1" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("8/8/8/8/8/8/8/3R4");
     });
     it("should NOT move the rook to the very right since a piece is in the middle", () => {
@@ -242,28 +238,24 @@ describe("Moves", () => {
       let engine = new ChessEngine("8/8/8/8/3B4/8/8/8");
       const result = engine.move({ from: "d4", to: "h8" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("7B/8/8/8/8/8/8/8");
     });
     it("should move the bishop to the higher-left corner", () => {
       let engine = new ChessEngine("8/8/8/8/3B4/8/8/8");
       const result = engine.move({ from: "d4", to: "a7" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("8/B7/8/8/8/8/8/8");
     });
     it("should move the bishop to the lower-left corner", () => {
       let engine = new ChessEngine("8/8/8/8/3B4/8/8/8");
       const result = engine.move({ from: "d4", to: "a1" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("8/8/8/8/8/8/8/B7");
     });
     it("should move the bishop to the lower-right corner", () => {
       let engine = new ChessEngine("8/8/8/8/3B4/8/8/8");
       const result = engine.move({ from: "d4", to: "g1" });
       expect(result.done).toBe(true);
-      expect(result.reason).toEqual(null);
       expect(engine.toFEN()).toEqual("8/8/8/8/8/8/8/6B1");
     });
 
@@ -295,5 +287,18 @@ describe("Moves", () => {
       expect(result.reason).toEqual(illegalMove());
       expect(engine.toFEN()).toEqual("8/8/8/8/3B4/4P3/8/8");
     });
+  });
+  describe("queen", () => {
+    it("should move the queen to the lower-right corner", () => {
+      let engine = new ChessEngine("8/8/8/8/3Q4/8/8/8");
+      const result = engine.move({ from: "d4", to: "g1" });
+      expect(result.done).toBe(true);
+      expect(result.reason).toEqual(null);
+      expect(engine.toFEN()).toEqual("8/8/8/8/8/8/8/6Q1");
+    });
+    // TODO Should be tested more heavily but too bored ATM
+  });
+  describe("king", () => {
+    // TODO : test king moves
   });
 });

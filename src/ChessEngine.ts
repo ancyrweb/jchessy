@@ -4,6 +4,7 @@ import {
   Move,
   MoveContext,
   MoveResult,
+  NullableBoardCase,
   OrNull,
   Piece,
   PieceColor,
@@ -28,6 +29,7 @@ class ChessEngine {
   private fen: string;
   private board: Board;
   private turn: PieceColor;
+  private history: MoveResult[] = [];
 
   constructor(
     fen?: string,
@@ -110,12 +112,17 @@ class ChessEngine {
     this.board[to.y][to.x] = this.board[from.y][from.x];
     this.board[from.y][from.x] = null;
 
-    return {
+    this.switchTurn();
+
+    const result = {
       done: true,
       from: move.from,
       to: move.to,
       reason: null
     };
+
+    this.history.push(result);
+    return result;
   }
 
   toFEN() {
@@ -124,6 +131,10 @@ class ChessEngine {
 
   getTurn() {
     return this.turn;
+  }
+
+  switchTurn() {
+    this.turn = this.turn === "b" ? "w" : "b";
   }
 }
 

@@ -12,6 +12,7 @@ const knightVectors: Vector[] = [
 ];
 
 const knightLegalVectors = (move: MoveContext): Vector[] => {
+  // TODO : check same-color pieces in the various positions
   return knightVectors;
 };
 
